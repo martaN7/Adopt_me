@@ -1,29 +1,31 @@
-import { Component } from "react";
+import {Component} from "react";
 
 class Carousel extends Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-        this.state = {
-            active: 0,
-        };
-    }
+    static defaultProps = {
+        images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
+    };
+    state = {
+        active: 0,
+    };
 
     handleIndexClick = (e) => {
+
         this.setState({
             active: +e.target.dataset.index,
         });
     };
 
     render() {
-        const { images } = this.props;
-        const { active } = this.state;
+        const {images} = this.props;
+        const {active} = this.state;
+        throw new Error("lol error");
 
         return (
             <div className="carousel">
-                <img src={images[active]} alt="animal" />
+                <img src={images[active]} alt="animal"/>
                 <div className="carousel-smaller">
                     {images.map((image, idx) => (
+                        //eslint-disable-next-line
                         <img
                             src={image}
                             alt="animal thumbnail"
