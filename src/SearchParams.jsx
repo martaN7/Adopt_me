@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import {useContext, useState} from "react";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
-import { useQuery } from "@tanstack/react-query";
+import {useQuery} from "@tanstack/react-query";
 import fetchSearch from "./fetchSearch";
+import AdoptPetContext from "./AdoptPetContext";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -15,9 +16,9 @@ const SearchParams = () => {
     const [animal, setAnimal] = useState("");
     const [breeds] = useBreedList(animal);
     const results = useQuery(["search", requestParams], fetchSearch);
+    const [adoptedPet] = useContext(AdoptPetContext);
 
     const pets = results?.data?.pets ?? [];
-
     return (
         <div className="search-params">
             <form
@@ -32,6 +33,14 @@ const SearchParams = () => {
                     setRequestParams(data);
                 }}
             >
+                {adoptedPet ? (
+                    <div className="pet image-container">
+                        <img
+                            src={adoptedPet?.images[0]}
+                            alt={adoptedPet?.name}
+                        />
+                    </div>
+                ) : null}
                 <label htmlFor="location">Location</label>
                 <input
                     name="location"
@@ -55,11 +64,7 @@ const SearchParams = () => {
                 </select>
 
                 <label htmlFor="breed">Breed</label>
-                <select
-                    id="breed"
-                    name="breed"
-                    disabled={!breeds.length}
-                >
+                <select id="breed" name="breed" disabled={!breeds.length}>
                     {breeds.map((breed) => (
                         <option key={breed} value={breed}>
                             {breed}
@@ -70,7 +75,7 @@ const SearchParams = () => {
                 <button type="submit">Submit</button>
             </form>
 
-            <Results pets={pets} />
+            <Results pets={pets}/>
         </div>
     );
 };
