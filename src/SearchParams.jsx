@@ -20,8 +20,9 @@ const SearchParams = () => {
 
     const pets = results?.data?.pets ?? [];
     return (
-        <div className="search-params">
+        <div className="my-0 mx-auto w-11/12">
             <form
+                className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col justify-center items-center"
                 onSubmit={(event) => {
                     event.preventDefault();
                     const formData = new FormData(event.target);
@@ -36,13 +37,14 @@ const SearchParams = () => {
                 {adoptedPet ? (
                     <div className="pet image-container">
                         <img
-                            src={adoptedPet?.images[0]}
+                            src={adoptedPet?.images[adoptedPet.activeImage]}
                             alt={adoptedPet?.name}
                         />
                     </div>
                 ) : null}
                 <label htmlFor="location">Location</label>
                 <input
+                    className="search-input"
                     name="location"
                     type="text"
                     id="location"
@@ -50,6 +52,7 @@ const SearchParams = () => {
                 />
                 <label htmlFor="animal">Animal</label>
                 <select
+                    className="search-input"
                     id="animal"
                     value={animal}
                     onChange={(e) => {
@@ -64,7 +67,7 @@ const SearchParams = () => {
                 </select>
 
                 <label htmlFor="breed">Breed</label>
-                <select id="breed" name="breed" disabled={!breeds.length}>
+                <select className="search-input grayed-out-disabled" id="breed" name="breed" disabled={!breeds.length}>
                     {breeds.map((breed) => (
                         <option key={breed} value={breed}>
                             {breed}
@@ -72,7 +75,9 @@ const SearchParams = () => {
                     ))}
                 </select>
 
-                <button type="submit">Submit</button>
+                <button className="rounded px-6 py-2 text-white hover:opacity-50 border-none bg-orange-500"
+                        type="submit">Submit
+                </button>
             </form>
 
             <Results pets={pets}/>

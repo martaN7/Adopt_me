@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const Pet = ({ name, id, breed, animal, location, images }) => {
+const Pet = ({name, id, breed, animal, location, images}) => {
     let hero = images.length
         ? images[0]
         : "http://pets-images.dev-apis.com/pets/none.jpg";
     return (
-        <Link className="pet" to={`/details/${id}`}>
-            <div className="image-container">
-                <img src={hero} alt={name} />
+        <Link className="relative block" to={`/details/${id}`}>
+            <div>
+                <img src={hero} alt={name}/>
             </div>
-            <div className="info">
+            <div className="absolute bottom-0 left-0 bg-gradient-to-tr from-white to-transparent pr-2 pt-2">
                 <h1>{name}</h1>
                 <h2>
                     {animal} - {breed} - {location}

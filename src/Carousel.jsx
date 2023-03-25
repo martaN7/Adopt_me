@@ -4,19 +4,13 @@ class Carousel extends Component {
     static defaultProps = {
         images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
     };
-    state = {
-        active: 0,
-    };
 
     handleIndexClick = (e) => {
-        this.setState({
-            active: +e.target.dataset.index,
-        });
+        this.props.setActiveImage(+e.target.dataset.index);
     };
 
     render() {
-        const { images } = this.props;
-        const { active } = this.state;
+        const { images, activeImage: active } = this.props;
 
         return (
             <div className="carousel">
