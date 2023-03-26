@@ -1,8 +1,10 @@
 import Pet from "./Pet";
+import {Pet as PetType} from "./APIResponsesTypes";
 
-const Results = ({pets}) => {
+//tu bez interfejsu
+const Results = ({pets}: { pets: PetType[] }) => {
     return (
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 search">
             {!pets.length ? (
                 <h1>No pets found...</h1>
             ) : (
