@@ -46,7 +46,6 @@ const Details = () => {
     return (
         <div className="details">
             <Carousel
-                activeImage={activeImage}
                 setActiveImage={setActiveImage}
                 images={pet.images}
             />

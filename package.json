@@ -8,29 +8,36 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet"
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "@vitejs/plugin-react": "^3.1.0",
+    "@vitest/coverage-c8": "^0.29.7",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-import-resolver-typescript": "^3.5.3",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "happy-dom": "^8.9.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "tailwindcss": "^3.2.7",
     "typescript": "^5.0.2",
-    "vite": "^4.1.4"
+    "vite": "^4.1.4",
+    "vitest": "^0.29.7",
+    "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.26.1",
